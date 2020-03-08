@@ -18,6 +18,7 @@ Object detection experiments based on [MMDetection: Open MMLab Detection Toolbox
 
 
 model | backbone | Lr schd | [box AP](http://cocodataset.org/index.htm#detection-eval) | config
+
 ------------- | ------------- | ------------- | ------------- | ------------- | -------------
 baseline (bn, frozen statistics) | res50 | 1x | 35.4, report:35.6  | retinanet_r50_fpn_1x
 bn -> torch_syncbn | res50 | 1x | 35.5 | retinanet_r50_fpn_1x_torch_syncbn
