@@ -56,8 +56,8 @@ model | backbone | FLOPs  | Lr schd | box AP | mask AP | config
 ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | -------------
 maskrcnn_r50_fpn  | res50 | 3.8G| 1x | 37.4 | 34.1 | MY/mask_rcnn_r50_fpn_1x_detectron2_syncbn
 maskrcnn_r50_fpn, **baseline** | [DetNasNet](https://arxiv.org/pdf/1903.10979.pdf) | 3.8G| 1x | 33.1 | 30.0 | detnasnet_detectron2_syncbn/mask_rcnn_fpn_1x
-+ [gcnet](https://arxiv.org/abs/1904.11492) | [DetNasNet](https://arxiv.org/pdf/1903.10979.pdf) | 3.8G| 1x | 34.5 | 31.2 | detnasnet_detectron2_syncbn/mask_rcnn_gcb_c4-c5_fpn_1x
-+ [gcnet](https://arxiv.org/abs/1904.11492)+[libra](https://arxiv.org/abs/1904.02701) | [DetNasNet](https://arxiv.org/pdf/1903.10979.pdf) | 3.8G| 1x | 35.0 | 30.9 | detnasnet_detectron2_syncbn/mask_rcnn_gcb_c4-c5_libra_fpn_1x
+|+ [gcnet](https://arxiv.org/abs/1904.11492) | [DetNasNet](https://arxiv.org/pdf/1903.10979.pdf) | 3.8G| 1x | 34.5 | 31.2 | detnasnet_detectron2_syncbn/mask_rcnn_gcb_c4-c5_fpn_1x
+|+ [gcnet](https://arxiv.org/abs/1904.11492)+[libra](https://arxiv.org/abs/1904.02701) | [DetNasNet](https://arxiv.org/pdf/1903.10979.pdf) | 3.8G| 1x | 35.0 | 30.9 | detnasnet_detectron2_syncbn/mask_rcnn_gcb_c4-c5_libra_fpn_1x
 
 #### Cascade-MaskRCNN-Res50-FPN
 model | backbone | Lr schd | box AP | mask AP | config
