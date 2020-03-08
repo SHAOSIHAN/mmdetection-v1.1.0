@@ -9,7 +9,7 @@ Object detection experiments based on [MMDetection: Open MMLab Detection Toolbox
 * Hardware: Ubuntu 16.04.6, 8 GeForce RTX 2080 Ti GPU
 * Software: Python 3.5.2, PyTorch 1.3.1, CUDA 10.0.130, CUDNN 7.5.0
  
-**Major Modification/ Adding**:
+**Major Modification/ Adding compared with  [MMDetection](https://github.com/open-mmlab/mmdetection)**:
 * Adding [implementation](mmdetection/mmdet/models/backbones/DetNASNet/) of [DetNASNet](https://arxiv.org/pdf/1903.10979.pdf) as backbone. [NIPS 2019 Paper: DetNAS: Backbone Search for Object Detection.](https://arxiv.org/pdf/1903.10979.pdf) DetNasNet is got by adopting Nearal Architecture Search (NAS) under [ShuffleNetV2](https://arxiv.org/abs/1807.11164)-like search space. Object Detection experiments with FPN on COCO show that, DetNasNet achieves promising enhancement (37.3->42.0, +4.7% mAP) than Res-50 backbone under comparable FLOPS (3.8G).
 * Adding [NaiveSyncBatchNorm](mmdetection/mmdet/models/utils/norm.py#L57) refferred from the implementation of [Detectron2](https://github.com/facebookresearch/detectron2).
 
