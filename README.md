@@ -11,7 +11,8 @@ Object detection experiments based on [MMDetection: Open MMLab Detection Toolbox
  
 **Major Modification/ Adding**:
 * Adding [implementation](mmdetection/mmdet/models/backbones/DetNASNet/) of [DetNASNet](https://arxiv.org/pdf/1903.10979.pdf) as backbone. [NIPS 2019 Paper: DetNAS: Backbone Search for Object Detection.](https://arxiv.org/pdf/1903.10979.pdf) DetNasNet is got by adopting Nearal Architecture Search (NAS) under [ShuffleNetV2](https://arxiv.org/abs/1807.11164)-like search space. Object Detection experiments with FPN on COCO show that, DetNasNet achieves promising enhancement (37.3->42.0, +4.7% mAP) than Res-50 backbone under comparable FLOPS (3.8G).
-  
+* Adding [NaiveSyncBatchNorm](mmdetection/mmdet/models/utils/norm.py#L93) refferred from the implementation of [Detectron2](https://github.com/facebookresearch/detectron2).
+
 **Experiments**:
 
 [COCO detection evaluation](http://cocodataset.org/index.htm#detection-eval) results on [COCO17 Val Dataset](http://cocodataset.org/index.htm#download). 
