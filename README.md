@@ -1,128 +1,86 @@
-# MMDetection
+# MMDetection-v1.1.0
+Object detection experiments based on [MMDetection: Open MMLab Detection Toolbox and Benchmark](https://github.com/open-mmlab/mmdetection). 
 
-**News**: We released the technical report on [ArXiv](https://arxiv.org/abs/1906.07155).
+## Contents
 
-Documentation: https://mmdetection.readthedocs.io/
+**Setup**: <a href='https://github.com/v-qjqs/mmdetection-v1.1.0/blob/master/mmdetection/docs/INSTALL.md'>Installation</a><br>
 
-## Introduction
+**Environments**:
+* Hardware: Ubuntu 16.04.6, 8 GeForce RTX 2080 Ti GPU
+* Software: Python 3.5.2, PyTorch 1.3.1, CUDA 10.0.130, CUDNN 7.5.0
+ 
+**Major Modification/ Adding**:
+* Adding [implementation](mmdetection/mmdet/models/backbones/DetNASNet/) of [DetNASNet](https://arxiv.org/pdf/1903.10979.pdf) as backbone. [NIPS 2019 Paper: DetNAS: Backbone Search for Object Detection.](https://arxiv.org/pdf/1903.10979.pdf) DetNasNet is got by adopting Nearal Architecture Search (NAS) under [ShuffleNetV2](https://arxiv.org/abs/1807.11164)-like search space. Object Detection experiments with FPN on COCO shows that, DetNasNet achieves promising enhancement (37.3->42.0, +4.7% mAP) than Res-50 backbone under comparable FLOPS (3.8G).
+  
+**Experiments**:
 
-The master branch works with **PyTorch 1.1 to 1.4**.
+[COCO detection evaluation](http://cocodataset.org/index.htm#detection-eval) results on [COCO17 Val Dataset](http://cocodataset.org/index.htm#download). 
 
-mmdetection is an open source object detection toolbox based on PyTorch. It is
-a part of the open-mmlab project developed by [Multimedia Laboratory, CUHK](http://mmlab.ie.cuhk.edu.hk/).
+***Box AP:***
 
-![demo image](demo/coco_test_12510.jpg)
+| Model | backbone | AP | AP<sup>0.5</sup> | AP<sup>0.75</sup>| AP<sup>small  </sup>| AP<sup>medium</sup>| AP<sup>large</sup>|
+| ------ | :------: | :------: | :------: | :------: | :------: | :------: | :------: |
+| RetinaNet640<sup>[1]</sup> | [resnetv1_50](https://arxiv.org/abs/1512.03385)| 0.344 | 0.514 | 0.376 | 0.170 | 0.375 | 0.522 |
 
-### Major features
-
-- **Modular Design**
-
-  We decompose the detection framework into different components and one can easily construct a customized object detection framework by combining different modules.
-
-- **Support of multiple frameworks out of box**
-
-  The toolbox directly supports popular and contemporary detection frameworks, *e.g.* Faster RCNN, Mask RCNN, RetinaNet, etc.
-
-- **High efficiency**
-
-  All basic bbox and mask operations run on GPUs now. The training speed is faster than or comparable to other codebases, including [Detectron](https://github.com/facebookresearch/Detectron), [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark) and [SimpleDet](https://github.com/TuSimple/simpledet).
-
-- **State of the art**
-
-  The toolbox stems from the codebase developed by the *MMDet* team, who won [COCO Detection Challenge](http://cocodataset.org/#detection-leaderboard) in 2018, and we keep pushing it forward.
-
-Apart from MMDetection, we also released a library [mmcv](https://github.com/open-mmlab/mmcv) for computer vision research, which is heavily depended on by this toolbox.
-
-## License
-
-This project is released under the [Apache 2.0 license](LICENSE).
-
-## Changelog
-
-v1.1.0 was released in 24/2/2020.
-Please refer to [CHANGELOG.md](docs/CHANGELOG.md) for details and release history.
-
-## Benchmark and model zoo
-
-Supported methods and backbones are shown in the below table.
-Results and models are available in the [Model zoo](docs/MODEL_ZOO.md).
-
-|                    | ResNet   | ResNeXt  | SENet    | VGG      | HRNet |
-|--------------------|:--------:|:--------:|:--------:|:--------:|:-----:|
-| RPN                | ✓        | ✓        | ☐        | ✗        | ✓     |
-| Fast R-CNN         | ✓        | ✓        | ☐        | ✗        | ✓     |
-| Faster R-CNN       | ✓        | ✓        | ☐        | ✗        | ✓     |
-| Mask R-CNN         | ✓        | ✓        | ☐        | ✗        | ✓     |
-| Cascade R-CNN      | ✓        | ✓        | ☐        | ✗        | ✓     |
-| Cascade Mask R-CNN | ✓        | ✓        | ☐        | ✗        | ✓     |
-| SSD                | ✗        | ✗        | ✗        | ✓        | ✗     |
-| RetinaNet          | ✓        | ✓        | ☐        | ✗        | ✓     |
-| GHM                | ✓        | ✓        | ☐        | ✗        | ✓     |
-| Mask Scoring R-CNN | ✓        | ✓        | ☐        | ✗        | ✓     |
-| Double-Head R-CNN  | ✓        | ✓        | ☐        | ✗        | ✓     |
-| Grid R-CNN (Plus)  | ✓        | ✓        | ☐        | ✗        | ✓     |
-| Hybrid Task Cascade| ✓        | ✓        | ☐        | ✗        | ✓     |
-| Libra R-CNN        | ✓        | ✓        | ☐        | ✗        | ✓     |
-| Guided Anchoring   | ✓        | ✓        | ☐        | ✗        | ✓     |
-| FCOS               | ✓        | ✓        | ☐        | ✗        | ✓     |
-| RepPoints          | ✓        | ✓        | ☐        | ✗        | ✓     |
-| Foveabox           | ✓        | ✓        | ☐        | ✗        | ✓     |
-| FreeAnchor         | ✓        | ✓        | ☐        | ✗        | ✓     |
-| NAS-FPN            | ✓        | ✓        | ☐        | ✗        | ✓     |
-| ATSS               | ✓        | ✓        | ☐        | ✗        | ✓     |
-
-Other features
-- [x] [CARAFE](configs/carafe/README.md)
-- [x] [DCNv2](configs/dcn/README.md)
-- [x] [Group Normalization](configs/gn/README.md)
-- [x] [Weight Standardization](configs/gn+ws/README.md)
-- [x] [OHEM](configs/faster_rcnn_ohem_r50_fpn_1x.py)
-- [x] Soft-NMS
-- [x] [Generalized Attention](configs/empirical_attention/README.md)
-- [x] [GCNet](configs/gcnet/README.md)
-- [x] [Mixed Precision (FP16) Training](configs/fp16)
-- [x] [InstaBoost](configs/instaboost/README.md)
+[1]:  RetinaNet with input resolution 640. Iou threshold 0.6 and score threshold approximately 0.0 are used in nms.  
 
 
-## Installation
-
-Please refer to [INSTALL.md](docs/INSTALL.md) for installation and dataset preparation.
 
 
-## Get Started
-
-Please see [GETTING_STARTED.md](docs/GETTING_STARTED.md) for the basic usage of MMDetection.
-
-## Contributing
-
-We appreciate all contributions to improve MMDetection. Please refer to [CONTRIBUTING.md](.github/CONTRIBUTING.md) for the contributing guideline.
-
-## Acknowledgement
-
-MMDetection is an open source project that is contributed by researchers and engineers from various colleges and companies. We appreciate all the contributors who implement their methods or add new features, as well as users who give valuable feedbacks.
-We wish that the toolbox and benchmark could serve the growing research community by providing a flexible toolkit to reimplement existing methods and develop their own new detectors.
-
-
-## Citation
-
-If you use this toolbox or benchmark in your research, please cite this project.
-
-```
-@article{mmdetection,
-  title   = {{MMDetection}: Open MMLab Detection Toolbox and Benchmark},
-  author  = {Chen, Kai and Wang, Jiaqi and Pang, Jiangmiao and Cao, Yuhang and
-             Xiong, Yu and Li, Xiaoxiao and Sun, Shuyang and Feng, Wansen and
-             Liu, Ziwei and Xu, Jiarui and Zhang, Zheng and Cheng, Dazhi and
-             Zhu, Chenchen and Cheng, Tianheng and Zhao, Qijie and Li, Buyu and
-             Lu, Xin and Zhu, Rui and Wu, Yue and Dai, Jifeng and Wang, Jingdong
-             and Shi, Jianping and Ouyang, Wanli and Loy, Chen Change and Lin, Dahua},
-  journal= {arXiv preprint arXiv:1906.07155},
-  year={2019}
-}
-```
+model | backbone | Lr schd | box AP | mask AP | config
+------------- | ------------- | ------------- | ------------- | ------------- | -------------
+retinanet_fpn | res50 | 1x | 35.4, reported:35.6 | __ | retinanet_r50_fpn_1x
+retinanet_fpn+soft_nms | res50 | 1x | 35.5 | __ | retinanet_r50_fpn_1x_softnms
+retinanet_fpn+guided_anchoring | res50 | 1x | 35.6 | __ | ga_retinanet_r50_fpn_1x_MY 
+retinanet_fpn | res50 | 1x | 35.3 | __ | retinanet_r50_fpn_1x_detectron2_syncbn
+retinanet_fpn | res50 | 1x | 35.5 | __ | retinanet_r50_fpn_1x_torch_syncbn
+retinanet_fpn | res50 | 1x | 33.5 | __ | retinanet_r50_fpn_1x_bntrain
+retinanet_fpn | res50 | 1x | 35.4 | __ | retinanet_r50_fpn_1x_gn
+retinanet_fpn | res50 | 1x | 38.8 | __ | retinanet_r50_fpn_1x_dconv_c3-c5
+retinanet_fpn | res50 | 1x | 38.7 (hhc)| __ | retinanet_r50_fpn_1x_mdconv_c3-c5_bn
+retinanet_fpn | res50 | 1x | 39.1 (wh)| __ | retinanet_r50_fpn_1x_mdconv_c3-c5_bn
+libra_retinanet_fpn | res50 | 1x | 37.4, reported: 37.7 | __ | libra_retinanet_r50_fpn_1x
+gcnet_retinanet_fpn | res50 | 1x | 37.6 | __ | retinanet_r50_fpn_1x_MY (r4)
+mdconv+gcnet+libra | res50 | 1x | 41.0 | __ | retinanet_r50_fpn_1x_mdconv_c3-c5_gcnet_c3-c5_libra_MY (r4)
 
 
-## Contact
 
-This repo is currently maintained by Kai Chen ([@hellock](http://github.com/hellock)), Yuhang Cao ([@yhcao6](https://github.com/yhcao6)), Wenwei Zhang ([@ZwwWayne](https://github.com/ZwwWayne)),
-Jiarui Xu ([@xvjiarui](https://github.com/xvjiarui)). Other core developers include Jiangmiao Pang ([@OceanPang](https://github.com/OceanPang)) and Jiaqi Wang ([@myownskyW7](https://github.com/myownskyW7)).
+model | backbone | Lr schd | box AP | mask AP | config
+------------- | ------------- | ------------- | ------------- | ------------- | -------------
+maskrcnn_fpn | res50 | 1x | 37.3, reported: 37.4 | 34.2, reported: 34.3 | mask_rcnn_r50_fpn_1x
+gn_all+maskrcnn_fpn | res50 | 1x | 37.2 | 34.4 | MY/mask_rcnn_r50_fpn_1x_gn (all)
+gn_notall+maskrcnn_fpn | res50 | 1x | 37.1 | 33.9 | MY/mask_rcnn_r50_fpn_1x_gn_notall 
+torch_syncbn+maskrcnn_fpn | res50 | 1x | 37.2 | 33.9 | MY/mask_rcnn_r50_fpn_1x_syncbn
+detectron2_syncbn+maskrcnn_fpn | res50 | 1x | 37.4 | 34.1 | MY/mask_rcnn_r50_fpn_1x_detectron2_syncbn
+gcnet+maskrcnn_fpn | res50 | 1x | 38.8, reported:38.9 | 35.4, reported:35.5 | gcnet/mask_rcnn_r4_gcb_c3-c5_r50_fpn_1x
+gcnet+maskrcnn_fpn | res50 | 1x | 39.6, reported:39.9 | 36.0, reported:36.2 | gcnet/mask_rcnn_r4_gcb_c3-c5_r50_fpn_syncbn_1x
+gcnet+maskrcnn_fpn | res50 | 1x | 39.9 | 36.1 | gcnet/mask_rcnn_r4_gcb_c3-c5_r50_fpn_detectron2_syncbn_1x
+libra_maskrcnn_fpn | res50 | 1x | 39.2 | 35.3 | gcnet/retinanet_r50_fpn_1x_MY
+donv+maskrcnn_fpn | res50 | 1x | 41.2, reported:41.1 | 37.3, reported:37.2 | hha:mask_rcnn_dconv_c3-c5_r50_fpn_1x
+mdonv+maskrcnn_fpn | res50 | 1x | 41.0, reported:41.3 | 37.1, reported:37.3 | hha:mask_rcnn_mdconv_c3-c5_r50_fpn_1x
+mdonv+gcnet+maskrcnn_fpn | res50 | 1x | 42.0 | 37.9 | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5
+mdonv+libra+maskrcnn_fpn | res50 | 1x | 42.6 | 37.9 | mask_rcnn_r50_fpn_1x_mdconv_c3-c5_libra
+mdonv+gcnet+libra+maskrcnn_fpn | res50 | 1x | 43.1 | 38.2 | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5_libra
+mdonv+gcnet+libra+syncbn+maskrcnn_fpn | res50 | 1x | 43.6 | 38.6 | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5_libra_detectron2_syncbn
+
+
+
+
+model | backbone | Lr schd | box AP | mask AP | config
+------------- | ------------- | ------------- | ------------- | ------------- | -------------
+cascade_maskrcnn | res50 | 1x | 41.2, reported: 41.2 | 35.7, reported: 35.7| cascade_mask_rcnn_r50_fpn_1x
+
+
+
+
+
+model | backbone | Lr schd | box AP  | config
+------------- | ------------- | ------------- | ------------- | -------------
+reppoints, no_gn | res50 | 1x | 36.8, reported:36.8 | reppoints_moment_r50_no_gn_fpn_1x
+reppoints | res50 | 1x | 37.9, report:38.2 | reppoints_moment_r50_fpn_1x (+gn)
+reppoints+mdconv+gcb+libra+ms_train| res50 | 1x | 42.1, (+flip: 42.4) | reppoints_moment_r50_dcn_gcb_libra_fpn_1x_mt_MY (+gn) 
+reppoints, detectron2_syncbn | res50 | 1x | ? | (+gn)
+reppoints+mdconv+gcb+libra+ms_train+syncbn| res50 | 1x | ? |  (+gn) 
+fcos | res50 | 1x | 35.6 | fcos_r50_fpn_gnhead_1x_my
+fcos+dcn+gcb+libra | res50 | 1x | 39.5 | fcos_r50_fpn_mdconv_gcb_c3-c5_libra_gnhead_1x
+fcos+dcn+gcb+libra+ms_train | res50 | 1x | 39.7(no flip) | fcos_r50_fpn_mdconv_gcb_c3-c5_libra_gnhead_1x_mt
