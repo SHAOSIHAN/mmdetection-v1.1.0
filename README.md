@@ -47,8 +47,8 @@ bn -> detectron2_syncbn | res50 | 1x | 37.4 | 34.1 | MY/mask_rcnn_r50_fpn_1x_det
 +[DCNV2](https://arxiv.org/abs/1811.11168)+[gcnet](https://arxiv.org/abs/1904.11492) | res50 | 1x | 42.0 | 37.9 | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5
 +[DCNV2](https://arxiv.org/abs/1811.11168)+[libra](https://arxiv.org/abs/1904.02701)  | res50 | 1x | 42.6 | 37.9 | mask_rcnn_r50_fpn_1x_mdconv_c3-c5_libra
 +[DCNV2](https://arxiv.org/abs/1811.11168)+[gcnet](https://arxiv.org/abs/1904.11492)+[libra](https://arxiv.org/abs/1904.02701)  | res50 | 1x | 43.1 | 38.2 | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5_libra
-+[DCNV2](https://arxiv.org/abs/1811.11168)+[gcnet](https://arxiv.org/abs/1904.11492)+[libra](https://arxiv.org/abs/1904.02701), bn -> detectron2_syncbn | res50 | 1x | **43.6** | **38.6** | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5_libra_detectron2_syncbn
-+[DCNV2](https://arxiv.org/abs/1811.11168)+[gcnet](https://arxiv.org/abs/1904.11492)+[libra](https://arxiv.org/abs/1904.02701)+ms_train, bn -> detectron2_syncbn | res50 | 1x | ? | ? | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5_libra_detectron2_syncbn_mt ?
++[DCNV2](https://arxiv.org/abs/1811.11168)+[gcnet](https://arxiv.org/abs/1904.11492)+[libra](https://arxiv.org/abs/1904.02701), bn -> detectron2_syncbn | res50 | 1x | 43.6, +flip:44.6 | 38.6, +flip:39.2 | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5_libra_detectron2_syncbn
++[DCNV2](https://arxiv.org/abs/1811.11168)+[gcnet](https://arxiv.org/abs/1904.11492)+[libra](https://arxiv.org/abs/1904.02701)+ms_train, bn -> detectron2_syncbn | res50 | 1x | **44.2**, +flip:**44.9** | **38.9**, +flip:**39.4** | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5_libra_detectron2_syncbn_mt ?
 
 
 #### MaskRCNN-DetNASNet-FPN
