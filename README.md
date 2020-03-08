@@ -16,6 +16,7 @@ Object detection experiments based on [MMDetection: Open MMLab Detection Toolbox
 ## Detection/Instance Segmentation Performance on [COCO17 Val Dataset](http://cocodataset.org/index.htm#download)
 ### RetinaNet-FPN
 
+
 model | backbone | Lr schd | [box AP](http://cocodataset.org/index.htm#detection-eval) | config
 ------------- | ------------- | ------------- | ------------- | ------------- | -------------
 baseline (bn, frozen statistics) | res50 | 1x | 35.4, report:35.6  | retinanet_r50_fpn_1x
