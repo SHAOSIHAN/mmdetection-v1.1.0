@@ -18,7 +18,7 @@ Object detection experiments based on [MMDetection: Open MMLab Detection Toolbox
 #### RetinaNet-Res50-FPN
 model | backbone | Lr schd | [box mAP](http://cocodataset.org/index.htm#detection-eval) | config
 ------------- | ------------- | ------------- | ------------- | -------------
-baseline (bn, frozen statistics) | res50 | 1x | 35.4, report:35.6  | retinanet_r50_fpn_1x
+**baseline** (bn, frozen statistics) | res50 | 1x | 35.4, report:35.6  | retinanet_r50_fpn_1x
 bn -> torch_syncbn | res50 | 1x | 35.5 | retinanet_r50_fpn_1x_torch_syncbn
 bn -> detectron2_syncbn | res50 | 1x | 35.3 | retinanet_r50_fpn_1x_detectron2_syncbn
 bn -> [gn](https://arxiv.org/abs/1803.08494) | res50 | 1x | 35.4 | retinanet_r50_fpn_1x_gn
@@ -33,7 +33,7 @@ nms -> [soft_nms](https://arxiv.org/abs/1704.04503)| res50 | 1x | 35.5  | retina
 #### MaskRCNN-Res50-FPN
 model | backbone | Lr schd | box AP | mask AP | config
 ------------- | ------------- | ------------- | ------------- | ------------- | -------------
-baseline (bn, frozen statistics) | res50 | 1x | 37.3, report: 37.4 | 34.2, report: 34.3 | mask_rcnn_r50_fpn_1x
+**baseline** (bn, frozen statistics) | res50 | 1x | 37.3, report: 37.4 | 34.2, report: 34.3 | mask_rcnn_r50_fpn_1x
 bn -> [gn](https://arxiv.org/abs/1803.08494) | res50 | 1x | 37.1 | 33.9 | MY/mask_rcnn_r50_fpn_1x_gn_notall 
 bn -> [gn](https://arxiv.org/abs/1803.08494), + gn_for_head | res50 | 1x | 37.2 | 34.4 | MY/mask_rcnn_r50_fpn_1x_gn (all)
 bn -> torch_syncbn | res50 | 1x | 37.2 | 33.9 | MY/mask_rcnn_r50_fpn_1x_syncbn
@@ -54,7 +54,7 @@ bn -> detectron2_syncbn | res50 | 1x | 37.4 | 34.1 | MY/mask_rcnn_r50_fpn_1x_det
 model | backbone | FLOPs  | Lr schd | box AP | mask AP | config
 ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | -------------
 maskrcnn_r50_fpn  | res50 | 3.8G| 1x | 37.4 | 34.1 | MY/mask_rcnn_r50_fpn_1x_detectron2_syncbn
-maskrcnn_r50_fpn, baseline | [DetNasNet](https://arxiv.org/pdf/1903.10979.pdf) | 3.8G| 1x | 33.1 | 30.0 | detnasnet_detectron2_syncbn/mask_rcnn_fpn_1x
+maskrcnn_r50_fpn, **baseline** | [DetNasNet](https://arxiv.org/pdf/1903.10979.pdf) | 3.8G| 1x | 33.1 | 30.0 | detnasnet_detectron2_syncbn/mask_rcnn_fpn_1x
 |+ [gcnet](https://arxiv.org/abs/1904.11492) | [DetNasNet](https://arxiv.org/pdf/1903.10979.pdf) | 3.8G| 1x | 34.5 | 31.2 | detnasnet_detectron2_syncbn/mask_rcnn_gcb_c4-c5_fpn_1x
 
 
@@ -62,7 +62,7 @@ maskrcnn_r50_fpn, baseline | [DetNasNet](https://arxiv.org/pdf/1903.10979.pdf) |
 #### Cascade-MaskRCNN-Res50-FPN
 model | backbone | Lr schd | box AP | mask AP | config
 ------------- | ------------- | ------------- | ------------- | ------------- | -------------
-cascade_maskrcnn | res50 | 1x | 41.2, report: 41.2 | 35.7, report: 35.7| cascade_mask_rcnn_r50_fpn_1x
+cascade_maskrcnn, **baseline** | res50 | 1x | 41.2, report: 41.2 | 35.7, report: 35.7| cascade_mask_rcnn_r50_fpn_1x
 
 
 
