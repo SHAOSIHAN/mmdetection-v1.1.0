@@ -14,9 +14,8 @@ Object detection experiments based on [MMDetection: Open MMLab Detection Toolbox
 
 
 ## Detection/Instance Segmentation Performance on [COCO17 Val Dataset](http://cocodataset.org/index.htm#download)
-### Anchor-based Detector
-#### RetinaNet-FPN:
-
+### Anchor-based Detector:
+#### RetinaNet-FPN
 model | backbone | Lr schd | [box AP](http://cocodataset.org/index.htm#detection-eval) | config
 ------------- | ------------- | ------------- | ------------- | -------------
 baseline (bn, frozen statistics) | res50 | 1x | 35.4, report:35.6  | retinanet_r50_fpn_1x
@@ -31,7 +30,7 @@ nms -> soft_nms | res50 | 1x | 35.5  | retinanet_r50_fpn_1x_softnms
 +gcnet | res50 | 1x | 37.6 | retinanet_r50_fpn_1x (gcb: r4)
 +DCNV2+gcnet+libra | res50 | 1x | **41.0** | retinanet_r50_fpn_1x_mdconv_c3-c5_gcnet_c3-c5_libra (gcb: r4)
 
-#### Mask-RCNN-FPN:
+#### Mask-RCNN-FPN
 model | backbone | Lr schd | box AP | mask AP | config
 ------------- | ------------- | ------------- | ------------- | ------------- | -------------
 baseline (bn, frozen statistics) | res50 | 1x | 37.3, report: 37.4 | 34.2, report: 34.3 | mask_rcnn_r50_fpn_1x
@@ -51,14 +50,13 @@ bn -> detectron2_syncbn | res50 | 1x | 37.4 | 34.1 | MY/mask_rcnn_r50_fpn_1x_det
 +DCNV2+gcnet+libra, bn -> detectron2_syncbn | res50 | 1x | **43.6** | **38.6** | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5_libra_detectron2_syncbn
 +DCNV2+gcnet+libra+ms_train, bn -> detectron2_syncbn | res50 | 1x | ? | ? | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5_libra_detectron2_syncbn_mt ?
 
-#### Cascade-Mask-RCNN-FPN:
+#### Cascade-Mask-RCNN-FPN
 model | backbone | Lr schd | box AP | mask AP | config
 ------------- | ------------- | ------------- | ------------- | ------------- | -------------
 cascade_maskrcnn | res50 | 1x | 41.2, report: 41.2 | 35.7, report: 35.7| cascade_mask_rcnn_r50_fpn_1x
 
 
-
-### Anchor-free based Detector
+### Anchor-free based Detector:
 model | backbone | Lr schd | box AP  | config
 ------------- | ------------- | ------------- | ------------- | -------------
 reppoints, no_gn | res50 | 1x | 36.8, reported:36.8 | reppoints_moment_r50_no_gn_fpn_1x
