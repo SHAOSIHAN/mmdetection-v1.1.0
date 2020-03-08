@@ -15,45 +15,54 @@ Object detection experiments based on [MMDetection: Open MMLab Detection Toolbox
 
 ## Detection/Instance Segmentation Performance on [COCO17 Val Dataset](http://cocodataset.org/index.htm#download)
 ### Anchor-based Detector:
-#### RetinaNet-FPN
-model | backbone | Lr schd | [box AP](http://cocodataset.org/index.htm#detection-eval) | config
+#### RetinaNet-Res50-FPN
+model | backbone | Lr schd | [box mAP](http://cocodataset.org/index.htm#detection-eval) | config
 ------------- | ------------- | ------------- | ------------- | -------------
 baseline (bn, frozen statistics) | res50 | 1x | 35.4, report:35.6  | retinanet_r50_fpn_1x
 bn -> torch_syncbn | res50 | 1x | 35.5 | retinanet_r50_fpn_1x_torch_syncbn
 bn -> detectron2_syncbn | res50 | 1x | 35.3 | retinanet_r50_fpn_1x_detectron2_syncbn
-bn -> gn | res50 | 1x | 35.4 | retinanet_r50_fpn_1x_gn
-nms -> soft_nms | res50 | 1x | 35.5  | retinanet_r50_fpn_1x_softnms
-+guided_anchoring | res50 | 1x | 35.6  | ga_retinanet_r50_fpn_1x
-+DCN | res50 | 1x | 38.8 | retinanet_r50_fpn_1x_dconv_c3-c5
-+DCNV2 | res50 | 1x | 39.1 | retinanet_r50_fpn_1x_mdconv_c3-c5_bn
-+libra | res50 | 1x | 37.4, report: 37.7 | libra_retinanet_r50_fpn_1x
-+gcnet | res50 | 1x | 37.6 | retinanet_r50_fpn_1x (gcb: r4)
-+DCNV2+gcnet+libra | res50 | 1x | **41.0** | retinanet_r50_fpn_1x_mdconv_c3-c5_gcnet_c3-c5_libra (gcb: r4)
+bn -> [gn](https://arxiv.org/abs/1803.08494) | res50 | 1x | 35.4 | retinanet_r50_fpn_1x_gn
+nms -> [soft_nms](https://arxiv.org/abs/1704.04503)| res50 | 1x | 35.5  | retinanet_r50_fpn_1x_softnms
++[guided_anchoring](https://arxiv.org/abs/1901.03278) | res50 | 1x | 35.6  | ga_retinanet_r50_fpn_1x
++ [DCN](https://arxiv.org/abs/1703.06211) | res50 | 1x | 38.8 | retinanet_r50_fpn_1x_dconv_c3-c5
++ [DCNV2](https://arxiv.org/abs/1811.11168) | res50 | 1x | 39.1 | retinanet_r50_fpn_1x_mdconv_c3-c5_bn
++ [libra-rcnn](https://arxiv.org/abs/1904.02701) | res50 | 1x | 37.4, report: 37.7 | libra_retinanet_r50_fpn_1x
++ [gcnet](https://arxiv.org/abs/1904.11492) | res50 | 1x | 37.6 | retinanet_r50_fpn_1x (gcb: r4)
++ [DCNV2](https://arxiv.org/abs/1811.11168) + [gcnet](https://arxiv.org/abs/1904.11492) + [libra](https://arxiv.org/abs/1904.02701)  | res50 | 1x | **41.0** | retinanet_r50_fpn_1x_mdconv_c3-c5_gcnet_c3-c5_libra (gcb: r4)
 
-#### Mask-RCNN-FPN
+#### MaskRCNN-Res50-FPN
 model | backbone | Lr schd | box AP | mask AP | config
 ------------- | ------------- | ------------- | ------------- | ------------- | -------------
 baseline (bn, frozen statistics) | res50 | 1x | 37.3, report: 37.4 | 34.2, report: 34.3 | mask_rcnn_r50_fpn_1x
-bn -> gn | res50 | 1x | 37.1 | 33.9 | MY/mask_rcnn_r50_fpn_1x_gn_notall 
-bn -> gn, + gn_for_head | res50 | 1x | 37.2 | 34.4 | MY/mask_rcnn_r50_fpn_1x_gn (all)
+bn -> [gn](https://arxiv.org/abs/1803.08494) | res50 | 1x | 37.1 | 33.9 | MY/mask_rcnn_r50_fpn_1x_gn_notall 
+bn -> [gn](https://arxiv.org/abs/1803.08494), + gn_for_head | res50 | 1x | 37.2 | 34.4 | MY/mask_rcnn_r50_fpn_1x_gn (all)
 bn -> torch_syncbn | res50 | 1x | 37.2 | 33.9 | MY/mask_rcnn_r50_fpn_1x_syncbn
 bn -> detectron2_syncbn | res50 | 1x | 37.4 | 34.1 | MY/mask_rcnn_r50_fpn_1x_detectron2_syncbn
-+gcnet | res50 | 1x | 38.8, report:38.9 | 35.4, report:35.5 | gcnet/mask_rcnn_r4_gcb_c3-c5_r50_fpn_1x
-+gcnet, bn -> torch_syncbn | res50 | 1x | 39.6, report:39.9 | 36.0, report:36.2 | gcnet/mask_rcnn_r4_gcb_c3-c5_r50_fpn_syncbn_1x
-+gcnet, bn -> detectron2_syncbn | res50 | 1x | 39.9 | 36.1 | gcnet/mask_rcnn_r4_gcb_c3-c5_r50_fpn_detectron2_syncbn_1x
-+libra | res50 | 1x | 39.2 | 35.3 | gcnet/retinanet_r50_fpn_1x_MY
-+DCN | res50 | 1x | 41.2, report:41.1 | 37.3, report:37.2 | hha:mask_rcnn_dconv_c3-c5_r50_fpn_1x
-+DCNV2 | res50 | 1x | 41.0, report:41.3 | 37.1, report:37.3 | hha:mask_rcnn_mdconv_c3-c5_r50_fpn_1x
-+DCNV2+gcnet | res50 | 1x | 42.0 | 37.9 | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5
-+DCNV2+libra | res50 | 1x | 42.6 | 37.9 | mask_rcnn_r50_fpn_1x_mdconv_c3-c5_libra
-+DCNV2+gcnet+libra | res50 | 1x | 43.1 | 38.2 | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5_libra
-+DCNV2+gcnet+libra, bn -> detectron2_syncbn | res50 | 1x | **43.6** | **38.6** | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5_libra_detectron2_syncbn
-+DCNV2+gcnet+libra+ms_train, bn -> detectron2_syncbn | res50 | 1x | ? | ? | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5_libra_detectron2_syncbn_mt ?
++[gcnet](https://arxiv.org/abs/1904.11492) | res50 | 1x | 38.8, report:38.9 | 35.4, report:35.5 | gcnet/mask_rcnn_r4_gcb_c3-c5_r50_fpn_1x
++[gcnet](https://arxiv.org/abs/1904.11492), bn -> torch_syncbn | res50 | 1x | 39.6, report:39.9 | 36.0, report:36.2 | gcnet/mask_rcnn_r4_gcb_c3-c5_r50_fpn_syncbn_1x
++[gcnet](https://arxiv.org/abs/1904.11492), bn -> detectron2_syncbn | res50 | 1x | 39.9 | 36.1 | gcnet/mask_rcnn_r4_gcb_c3-c5_r50_fpn_detectron2_syncbn_1x
++[libra](https://arxiv.org/abs/1904.02701) | res50 | 1x | 39.2 | 35.3 | gcnet/retinanet_r50_fpn_1x_MY
++[DCN](https://arxiv.org/abs/1703.06211) | res50 | 1x | 41.2, report:41.1 | 37.3, report:37.2 | hha:mask_rcnn_dconv_c3-c5_r50_fpn_1x
++[DCNV2](https://arxiv.org/abs/1811.11168) | res50 | 1x | 41.0, report:41.3 | 37.1, report:37.3 | hha:mask_rcnn_mdconv_c3-c5_r50_fpn_1x
++[DCNV2](https://arxiv.org/abs/1811.11168)+[gcnet](https://arxiv.org/abs/1904.11492) | res50 | 1x | 42.0 | 37.9 | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5
++[DCNV2](https://arxiv.org/abs/1811.11168)+[libra](https://arxiv.org/abs/1904.02701)  | res50 | 1x | 42.6 | 37.9 | mask_rcnn_r50_fpn_1x_mdconv_c3-c5_libra
++[DCNV2](https://arxiv.org/abs/1811.11168)+[gcnet](https://arxiv.org/abs/1904.11492)+[libra](https://arxiv.org/abs/1904.02701)  | res50 | 1x | 43.1 | 38.2 | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5_libra
++[DCNV2](https://arxiv.org/abs/1811.11168)+[gcnet](https://arxiv.org/abs/1904.11492)+[libra](https://arxiv.org/abs/1904.02701), bn -> detectron2_syncbn | res50 | 1x | **43.6** | **38.6** | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5_libra_detectron2_syncbn
++[DCNV2](https://arxiv.org/abs/1811.11168)+[gcnet](https://arxiv.org/abs/1904.11492)+[libra](https://arxiv.org/abs/1904.02701)+ms_train, bn -> detectron2_syncbn | res50 | 1x | ? | ? | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5_libra_detectron2_syncbn_mt ?
 
-#### Cascade-Mask-RCNN-FPN
+#### MaskRCNN-DetNASNet-FPN
+model | backbone | FLOPs  | Lr schd | box AP | mask AP | config
+------------- | ------------- | ------------- | ------------- | ------------- | -------------
+maskrcnn_r50_fpn  | res50 | 3.8G| 1x | 37.4 | 34.1 | MY/mask_rcnn_r50_fpn_1x_detectron2_syncbn
+maskrcnn_r50_fpn  | [DetNasNet](https://arxiv.org/pdf/1903.10979.pdf) | 3.8G| 1x | 33.1 | 30.0 | detnasnet_detectron2_syncbn/mask_rcnn_fpn_1x
+
+
+#### Cascade-MaskRCNN-Res50-FPN
 model | backbone | Lr schd | box AP | mask AP | config
 ------------- | ------------- | ------------- | ------------- | ------------- | -------------
 cascade_maskrcnn | res50 | 1x | 41.2, report: 41.2 | 35.7, report: 35.7| cascade_mask_rcnn_r50_fpn_1x
+
+
 
 
 ### Anchor-free based Detector:
@@ -72,3 +81,5 @@ fcos+dcn+gcb+libra+ms_train | res50 | 1x | 39.7(no flip) | fcos_r50_fpn_mdconv_g
 | Model | backbone | AP | AP<sup>0.5</sup> | AP<sup>0.75</sup>| AP<sup>small  </sup>| AP<sup>medium</sup>| AP<sup>large</sup>|
 | ------ | :------: | :------: | :------: | :------: | :------: | :------: | :------: |
 | RetinaNet640<sup>[1]</sup> | [resnetv1_50](https://arxiv.org/abs/1512.03385)| 0.344 | 0.514 | 0.376 | 0.170 | 0.375 | 0.522 |
+
+
