@@ -1,23 +1,22 @@
 # MMDetection-v1.1.0
 Object detection experiments based on [MMDetection: Open MMLab Detection Toolbox and Benchmark](https://github.com/open-mmlab/mmdetection). 
-
-## Contents
-
 **Setup**: <a href='https://github.com/v-qjqs/mmdetection-v1.1.0/blob/master/mmdetection/docs/INSTALL.md'>Installation</a><br>
 
 **Environments**:
 * Hardware: Ubuntu 16.04.6, 8 GeForce RTX 2080 Ti GPU
 * Software: Python 3.5.2, PyTorch 1.3.1, CUDA 10.0.130, CUDNN 7.5.0
- 
+
+## Experiments
+
 **Major Modification/ Adding compared with  [MMDetection](https://github.com/open-mmlab/mmdetection)**:
 * Adding [implementation](mmdetection/mmdet/models/backbones/DetNASNet/) of [DetNASNet](https://arxiv.org/pdf/1903.10979.pdf) as backbone. [NIPS 2019 Paper: DetNAS: Backbone Search for Object Detection.](https://arxiv.org/pdf/1903.10979.pdf) DetNasNet is got by adopting [Single Path One-Shot](https://arxiv.org/abs/1904.00420) Nearal Architecture Search (NAS) under [ShuffleNetV2](https://arxiv.org/abs/1807.11164)-like search space. Object Detection experiments with [FPN](https://arxiv.org/abs/1612.03144) on COCO show that, DetNasNet achieves promising enhancement (37.3->42.0, +4.7% mAP) than Res-50 backbone under comparable FLOPS (3.8G).
 * Adding [NaiveSyncBatchNorm](mmdetection/mmdet/models/utils/norm.py#L57) refferred from the implementation of [Detectron2](https://github.com/facebookresearch/detectron2).
+  
+**COCO detection/instance segmentation performance on [COCO17 Val Dataset](http://cocodataset.org/index.htm#download)**:
 
-**Experiments**:
 
-[COCO detection evaluation](http://cocodataset.org/index.htm#detection-eval) results on [COCO17 Val Dataset](http://cocodataset.org/index.htm#download). 
 
-***Box AP:***
+***[Box AP](http://cocodataset.org/index.htm#detection-eval):***
 
 | Model | backbone | AP | AP<sup>0.5</sup> | AP<sup>0.75</sup>| AP<sup>small  </sup>| AP<sup>medium</sup>| AP<sup>large</sup>|
 | ------ | :------: | :------: | :------: | :------: | :------: | :------: | :------: |
