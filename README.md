@@ -42,8 +42,8 @@ bn -> detectron2_syncbn | res50 | 1x | 37.4 | 34.1 | MY/mask_rcnn_r50_fpn_1x_det
 +[gcnet](https://arxiv.org/abs/1904.11492), bn -> torch_syncbn | res50 | 1x | 39.6, report:39.9 | 36.0, report:36.2 | gcnet/mask_rcnn_r4_gcb_c3-c5_r50_fpn_syncbn_1x
 +[gcnet](https://arxiv.org/abs/1904.11492), bn -> detectron2_syncbn | res50 | 1x | 39.9 | 36.1 | gcnet/mask_rcnn_r4_gcb_c3-c5_r50_fpn_detectron2_syncbn_1x
 +[libra](https://arxiv.org/abs/1904.02701) | res50 | 1x | 39.2 | 35.3 | gcnet/retinanet_r50_fpn_1x_MY
-+[DCN](https://arxiv.org/abs/1703.06211) | res50 | 1x | 41.2, report:41.1 | 37.3, report:37.2 | hha:mask_rcnn_dconv_c3-c5_r50_fpn_1x
-+[DCNV2](https://arxiv.org/abs/1811.11168) | res50 | 1x | 41.0, report:41.3 | 37.1, report:37.3 | hha:mask_rcnn_mdconv_c3-c5_r50_fpn_1x
++[DCN](https://arxiv.org/abs/1703.06211) | res50 | 1x | 41.2, report:41.1 | 37.3, report:37.2 | mask_rcnn_dconv_c3-c5_r50_fpn_1x
++[DCNV2](https://arxiv.org/abs/1811.11168) | res50 | 1x | 41.0, report:41.3 | 37.1, report:37.3 | mask_rcnn_mdconv_c3-c5_r50_fpn_1x
 +[DCNV2](https://arxiv.org/abs/1811.11168)+[gcnet](https://arxiv.org/abs/1904.11492) | res50 | 1x | 42.0 | 37.9 | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5
 +[DCNV2](https://arxiv.org/abs/1811.11168)+[libra](https://arxiv.org/abs/1904.02701)  | res50 | 1x | 42.6 | 37.9 | mask_rcnn_r50_fpn_1x_mdconv_c3-c5_libra
 +[DCNV2](https://arxiv.org/abs/1811.11168)+[gcnet](https://arxiv.org/abs/1904.11492)+[libra](https://arxiv.org/abs/1904.02701)  | res50 | 1x | 43.1 | 38.2 | mask_rcnn_r50_fpn_1x_mdconv_gcb_c3-c5_libra
@@ -52,7 +52,7 @@ bn -> detectron2_syncbn | res50 | 1x | 37.4 | 34.1 | MY/mask_rcnn_r50_fpn_1x_det
 
 #### MaskRCNN-DetNASNet-FPN
 model | backbone | FLOPs  | Lr schd | box AP | mask AP | config
-------------- | ------------- | ------------- | ------------- | ------------- | -------------
+------------- | ------------- | ------------- | ------------- | ------------- | ------------- | -------------
 maskrcnn_r50_fpn  | res50 | 3.8G| 1x | 37.4 | 34.1 | MY/mask_rcnn_r50_fpn_1x_detectron2_syncbn
 maskrcnn_r50_fpn  | [DetNasNet](https://arxiv.org/pdf/1903.10979.pdf) | 3.8G| 1x | 33.1 | 30.0 | detnasnet_detectron2_syncbn/mask_rcnn_fpn_1x
 
