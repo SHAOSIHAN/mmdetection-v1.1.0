@@ -158,9 +158,3 @@ class ShuffleNetV2DetNAS(nn.Module):
                 # trick: eval have effect on BatchNorm only
                 if isinstance(m, _BatchNorm):
                     m.eval()
-
-
-# if __name__ == "__main__":
-#     from maskrcnn_benchmark.config import cfg
-#     model = ShuffleNetV2DetNAS(cfg)
-#     print(model)
