@@ -106,6 +106,11 @@ class ShuffleNetV2DetNAS(nn.Module):
                     kaiming_init(m)
                 elif isinstance(m, (_BatchNorm, nn.GroupNorm)):
                     constant_init(m, 1)
+            if self.dcn is not None:
+                for m in self.modules():
+                    if isinstance(m, ShuffleNetV2BlockSearched) and hasattr(
+                            m, 'conv2_offset'):
+                        constant_init(m.conv2_offset, 0)
         else:
             raise TypeError('pretrained must be a str or None')
 
