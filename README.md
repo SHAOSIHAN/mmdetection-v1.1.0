@@ -23,12 +23,12 @@ bn -> torch_syncbn | res50 | 1x | 35.5 | retinanet_r50_fpn_1x_torch_syncbn
 bn -> detectron2_syncbn | res50 | 1x | 35.3 | retinanet_r50_fpn_1x_detectron2_syncbn
 bn -> [gn](https://arxiv.org/abs/1803.08494) | res50 | 1x | 35.4 | retinanet_r50_fpn_1x_gn
 nms -> [soft_nms](https://arxiv.org/abs/1704.04503)| res50 | 1x | 35.5  | retinanet_r50_fpn_1x_softnms
-+ [guided_anchoring](https://arxiv.org/abs/1901.03278)| res50 | 1x | 35.6  | ga_retinanet_r50_fpn_1x
-+ [DCN](https://arxiv.org/abs/1703.06211) | res50 | 1x | 38.8 | retinanet_r50_fpn_1x_dconv_c3-c5
-+ [DCNV2](https://arxiv.org/abs/1811.11168) | res50 | 1x | 39.1 | retinanet_r50_fpn_1x_mdconv_c3-c5_bn
-+ [libra-rcnn](https://arxiv.org/abs/1904.02701) | res50 | 1x | 37.4, report: 37.7 | libra_retinanet_r50_fpn_1x
-+ [gcnet](https://arxiv.org/abs/1904.11492) | res50 | 1x | 37.6 | retinanet_r50_fpn_1x (gcb: r4)
-+ [DCNV2](https://arxiv.org/abs/1811.11168) + [gcnet](https://arxiv.org/abs/1904.11492) + [libra](https://arxiv.org/abs/1904.02701)  | res50 | 1x | **41.0** | retinanet_r50_fpn_1x_mdconv_c3-c5_gcnet_c3-c5_libra (gcb: r4)
+|+ [guided_anchoring](https://arxiv.org/abs/1901.03278)| res50 | 1x | 35.6  | ga_retinanet_r50_fpn_1x
+|+ [DCN](https://arxiv.org/abs/1703.06211) | res50 | 1x | 38.8 | retinanet_r50_fpn_1x_dconv_c3-c5
+|+ [DCNV2](https://arxiv.org/abs/1811.11168) | res50 | 1x | 39.1 | retinanet_r50_fpn_1x_mdconv_c3-c5_bn
+|+ [libra-rcnn](https://arxiv.org/abs/1904.02701) | res50 | 1x | 37.4, report: 37.7 | libra_retinanet_r50_fpn_1x
+|+ [gcnet](https://arxiv.org/abs/1904.11492) | res50 | 1x | 37.6 | retinanet_r50_fpn_1x (gcb: r4)
+|+ [DCNV2](https://arxiv.org/abs/1811.11168) + [gcnet](https://arxiv.org/abs/1904.11492) + [libra](https://arxiv.org/abs/1904.02701)  | res50 | 1x | **41.0** | retinanet_r50_fpn_1x_mdconv_c3-c5_gcnet_c3-c5_libra (gcb: r4)
 
 #### MaskRCNN-Res50-FPN
 model | backbone | Lr schd | box AP | mask AP | config
