@@ -92,8 +92,6 @@ class ShuffleNetV2DetNAS(nn.Module):
 
         self.features = nn.Sequential(*self.features)
         self.frozen_stages = frozen_stages
-        # if self.frozen_stages >= 0:
-        #     raise NotImplementedError
         self._freeze_stages()
         self.feat_dim = stage_out_channels[-2]  # NOTE stage_out_channels[-1] is only used for fc in imgnet classification task
         
@@ -117,11 +115,9 @@ class ShuffleNetV2DetNAS(nn.Module):
             for param in self.first_conv.parameters():
                 param.requires_grad = False
 
-        # NOTE TODO continue
         if self.frozen_stages >=1:
             end_idx = self.stage_ends_idx[self.frozen_stages-1]
             for i in range(end_idx+1):
-                # print('self.features[i]: ', self.features[i])
                 self.features[i].eval()
                 for param in self.features[i].parameters():
                     param.requires_grad = False
@@ -141,7 +137,6 @@ class ShuffleNetV2DetNAS(nn.Module):
         self._freeze_stages()
         if mode and self.norm_eval:
             for m in self.modules():
-                # print('m: ', m)
                 # trick: eval have effect on BatchNorm only
                 if isinstance(m, _BatchNorm):
                     m.eval()
