@@ -86,6 +86,7 @@ fcos | res50 | 1x | 35.6 | fcos_r50_fpn_gnhead_1x_my
 fcos+dcn+gcb+libra | res50 | 1x | 39.5 | fcos_r50_fpn_mdconv_gcb_c3-c5_libra_gnhead_1x
 fcos+dcn+gcb+libra+ms_train | res50 | 1x | 39.7(no flip) | fcos_r50_fpn_mdconv_gcb_c3-c5_libra_gnhead_1x_mt
 [guided_anchoring](https://arxiv.org/abs/1901.03278), **BASELINE** | res50 | 1x | 35.6  | ga_retinanet_r50_fpn_1x_MY
++dcn+gcb+libra+ms_train, bn -> detectron2_syncbn | res50 | 1x | **41.8**  | ga_retinanet_r50_mdconv_gcb_libra_fpn_detectron2_syncbn_1x_mt_MY
 +dcn+gcb+libra+ms_train+gn_for_neck_head, bn -> detectron2_syncbn | res50 | 1x | **41.7**  | ga_retinanet_r50_mdconv_gcb_libra_fpn_detectron2_syncbn_gnneckhead_1x_mt_MY
 
 
