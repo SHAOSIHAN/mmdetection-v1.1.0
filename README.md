@@ -90,7 +90,3 @@ fcos+dcn+gcb+libra+ms_train | res50 | 1x | 39.7(no flip) | fcos_r50_fpn_mdconv_g
 +dcn+gcb+libra+ms_train+gn_for_neck_head, bn -> detectron2_syncbn | res50 | 1x | **41.7**  | ga_retinanet_r50_mdconv_gcb_libra_fpn_detectron2_syncbn_gnneckhead_1x_mt_MY
 
 
-| Model | backbone | AP | AP<sup>0.5</sup> | AP<sup>0.75</sup>| AP<sup>small  </sup>| AP<sup>medium</sup>| AP<sup>large</sup>|
-| ------ | :------: | :------: | :------: | :------: | :------: | :------: | :------: |
-| RetinaNet640<sup>[1]</sup> | [resnetv1_50](https://arxiv.org/abs/1512.03385)| 0.344 | 0.514 | 0.376 | 0.170 | 0.375 | 0.522 |
-
