@@ -65,6 +65,7 @@ model | backbone | Lr schd | box AP | mask AP | config
 cascade_maskrcnn, **baseline** | res50 | 1x | 41.2, report: 41.2 | 35.7, report: 35.7| cascade_mask_rcnn_r50_fpn_1x
 +[DCNV2](https://arxiv.org/abs/1811.11168)+[gcnet](https://arxiv.org/abs/1904.11492)+[libra](https://arxiv.org/abs/1904.02701), bn -> detectron2_syncbn | res50 | 1x | 46.0, +flip:46.9 | 39.4, +flip:39.9 | cascade_mask_rcnn_r50_mdconv_gcb_libra_detectron2_syncbn_fpn_1x_MY
 +[DCNV2](https://arxiv.org/abs/1811.11168)+[gcnet](https://arxiv.org/abs/1904.11492)+[libra](https://arxiv.org/abs/1904.02701)+ms_train, bn -> detectron2_syncbn | res50 | 1x | **46.8**, +flip:**47.3** | **39.9**, +flip:**40.3** | cascade_mask_rcnn_r50_mdconv_gcb_libra_detectron2_syncbn_fpn_1x_mt_MY
++[DCNV2](https://arxiv.org/abs/1811.11168)+[gcnet](https://arxiv.org/abs/1904.11492)+[libra](https://arxiv.org/abs/1904.02701)+ms_train, bn -> detectron2_syncbn | res50 | 20e | +flip:**48.3** | +flip:**40.9** | cascade_mask_rcnn_r50_mdconv_gcb_libra_detectron2_syncbn_fpn_20e_1x_mt_MY
 
 
 #### Hybrid Task Cascade (HTC)
