@@ -73,6 +73,7 @@ model | backbone | Lr schd | box AP | mask AP | config
 ------------- | ------------- | ------------- | ------------- | ------------- | -------------
 [Hybrid Task Cascade (HTC)](https://arxiv.org/abs/1901.07518), **baseline** | res50 | 1x | 41.5 | 36.5 | htc/htc_without_semantic_r50_fpn_1x
 +[DCNV2](https://arxiv.org/abs/1811.11168)+[gcnet](https://arxiv.org/abs/1904.11492)+[libra](https://arxiv.org/abs/1904.02701)+ms_train, bn -> detectron2_syncbn | res50 | 1x | **47.1**, +flip:**47.8** | **40.7**, +flip:**41.2** | htc/htc_without_semantic_r50_fpn_mdconv_gcb_libra_detectron2_syncbn_mt_1x_my
++[DCNV2](https://arxiv.org/abs/1811.11168)+[gcnet](https://arxiv.org/abs/1904.11492)+[libra](https://arxiv.org/abs/1904.02701)+ms_train, bn -> detectron2_syncbn | res50 | 1x | +flip:**48.8** | +flip:**42.0** | htc/htc_without_semantic_r50_fpn_20e_mdconv_gcb_libra_detectron2_syncbn_mt_1x_my
 
 
 ### Anchor-free based Detector:
